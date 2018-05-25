@@ -9,7 +9,7 @@ CMD /sbin/init
 
 #Install wget
 RUN yum -y update
-RUN yum -y install tree sudo netcat
+RUN yum -y install tree sudo netcat initscripts
 
 #Enable ssh
 RUN rm -f /etc/service/sshd/down

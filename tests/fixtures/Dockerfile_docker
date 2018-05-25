@@ -1,5 +1,5 @@
 FROM mup-tests-server
 RUN yum -y update
-RUN yum -y install lxc iptables && \
+RUN yum -y install lxc iptables initscripts && \
     curl https://get.docker.com/ | sh && usermod -aG docker $(whoami)
 RUN echo 'DOCKER_OPTS="--storage-driver=vfs"' >> /etc/default/docker
