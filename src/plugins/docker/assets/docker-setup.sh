@@ -2,6 +2,8 @@
 
 # TODO make sure we can run docker in this server
 
+echo "Inside docker=setup.sh"
+
 install_docker () {
 # Remove the lock
   set +e

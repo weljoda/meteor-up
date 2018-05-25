@@ -46,9 +46,11 @@ export function setup(api) {
 
   const list = nodemiral.taskList('Setup Docker');
 
+  console.log('Entering docker-setup.sh');
   list.executeScript('Setup Docker', {
     script: api.resolvePath(__dirname, 'assets/docker-setup.sh')
   });
+  console.log('Left docker-setup.sh');
 
   const sessions = swarmEnabled ?
     api.getSessionsForServers(servers) :
