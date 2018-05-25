@@ -20,7 +20,7 @@ install_docker () {
     sudo yum clean all > /dev/null
     set -e
     sudo yum -y update
-    sudo yum -y install wget lxc iptables curl redhat-lsb-core
+    sudo yum -y install wget lxc iptables curl redhat-lsb-core initscripts
   fi
 
   # Install docker
