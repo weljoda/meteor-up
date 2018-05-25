@@ -2,14 +2,14 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage
+FROM docker pull appcontainers/centos:7
 
 # Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+CMD /sbin/init
 
 #Install wget
-RUN apt-get update
-RUN apt-get -y install tree sudo netcat
+RUN yum -y update
+RUN yum -y install tree sudo netcat
 
 #Enable ssh
 RUN rm -f /etc/service/sshd/down
@@ -18,4 +18,4 @@ RUN rm -f /etc/service/sshd/down
 EXPOSE 22
 
 # Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN yum clean all && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

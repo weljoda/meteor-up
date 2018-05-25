@@ -19,7 +19,7 @@ var publish = '-p 127.0.0.1:3500:22';
 var image = argv.skipPull ? 'mup-tests-server' : 'mup-tests-server-docker';
 
 var containerId = sh.exec(
-  `docker run ${volume} ${publish} --privileged -d -t ${image} /sbin/my_init`
+  `docker run ${volume} ${publish} --privileged -d -t ${image} /sbin/init`
 ).output.trim();
 
 sh.exec(`docker exec ${containerId} sudo service docker start`);

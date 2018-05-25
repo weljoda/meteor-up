@@ -10,7 +10,7 @@ var argv = require('yargs').argv;
 
 if (process.platform !== 'win32') {
   var installCommands = [
-    'command -v node >/dev/null 2>&1 || { curl -sL https://deb.nodesource.com/setup_5.x |  bash - &&  apt-get install -qq -y nodejs; }',
+    'command -v node >/dev/null 2>&1 || { curl -sL https://deb.nodesource.com/setup_5.x |  bash - &&  yum install -qq -y nodejs; }',
     'command -v docker >/dev/null 2>&1 || { curl https://get.docker.com/ |  sh && echo \'DOCKER_OPTS="--storage-driver=devicemapper"\' |  tee --append /etc/default/docker >/dev/null &&  service docker start ||  service docker restart; }',
     'command -v meteor >/dev/null 2>&1 || { curl https://install.meteor.com/ | sh; }'
   ];
