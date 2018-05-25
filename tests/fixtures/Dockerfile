@@ -2,7 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM docker pull appcontainers/centos:7
+FROM appcontainers/centos:7
 
 # Use baseimage-docker's init system.
 CMD /sbin/init
