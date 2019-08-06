@@ -33,7 +33,7 @@ echo "Pulled jwilder/nginx-proxy and jrcs/letsencrypt-nginx-proxy-companion"
 NGINX_CONFIG="client_max_body_size $CLIENT_UPLOAD_LIMIT;";
 NGINX_CONFIG_PATH="/opt/$APPNAME/config/nginx-default.conf"
 
-# Only add if it doesn't already exist
+# Only add client_max_body_size if it doesn't already exist
 # The value should only change when `mup proxy reconfig-shared` is run
 # That also resets the config, allowing this line to be added again with the new value
 # If the user's custom config already has this option, or a comment
@@ -48,7 +48,9 @@ sudo docker run \
   -p $HTTPS_PORT:443 \
   --name $APPNAME \
   --env-file=$ENV_FILE \
-  --restart=always\
+  --restart=always \
+  --log-opt max-size=100m \
+  --log-opt max-file=7 \
   -v /opt/$APPNAME/mounted-certs:/etc/nginx/certs \
   -v /opt/$APPNAME/config/vhost.d:/etc/nginx/vhost.d \
   -v /opt/$APPNAME/config/html:/usr/share/nginx/html \
@@ -63,6 +65,8 @@ sudo docker run -d \
   --env-file=$ENV_FILE_LETSENCRYPT \
   --restart=always \
   --volumes-from $APPNAME \
+  --log-opt max-size=100m \
+  --log-opt max-file=3 \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
   jrcs/letsencrypt-nginx-proxy-companion
 echo "Ran jrcs/letsencrypt-nginx-proxy-companion"

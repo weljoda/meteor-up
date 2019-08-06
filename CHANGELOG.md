@@ -1,3 +1,16 @@
+## 1.4.6 - April 27, 2019
+- Mongo and nginx logs are now rotated and limited to 700mb
+- Fix error when running `mup setup` without a `servers` object in the config.
+
+## 1.4.5 - June 9, 2018
+- Add option to keep the app running during Prepare Bundle
+- Add `app.docker.prepareBundle` to example config
+- Update node-tar to fix deploying from Windows
+- Fix mongo container starting when stopped with `docker stop` and docker daemon is restarted (@pravdomil)
+- Fix verifying deployment when using user defined network
+- Fix proxy.clientUploadLimit being ignored when not using proxy.nginxServerConfig
+- Improve messages shown when container has no ip address
+
 ## 1.4.4 - April 2, 2018
 - Allow customizing the docker image created during Prepare Bundle. For example, this can be used to install packages using apt-get.
 - `mup status` will check if the default shell is bash
